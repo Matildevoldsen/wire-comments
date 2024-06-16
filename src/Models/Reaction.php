@@ -11,11 +11,10 @@ class Reaction extends Model
 {
     use HasFactory;
 
-
     protected $fillable = [
         'user_id',
         'comment_id',
-        'emoji'
+        'emoji',
     ];
 
     public function user(): BelongsTo

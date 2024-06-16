@@ -16,7 +16,7 @@ class Comment extends Model
     protected $fillable = [
         'user_id',
         'body',
-        'parent_id'
+        'parent_id',
     ];
 
     public function user(): BelongsTo
