@@ -52,13 +52,21 @@ class Post extends Model
 }
 ```
 
-### 
+### Layout File
 
 In your `app.blade.php` file, you need to include:
 
 ``
 @livewireScriptConfig
 ``
+
+### Adding Emoji's
+
+To add emoji's simply just add an array of emoji's to the livewire component:
+
+```bladehtml
+<livewire:comments :model="$post" :emojis="['👍', '👎', '❤️', '😂', '😯', '😢', '😡']" />
+```
 
 ### Including the Component in a View
 
