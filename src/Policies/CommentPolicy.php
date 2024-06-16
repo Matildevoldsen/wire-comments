@@ -2,7 +2,6 @@
 
 namespace WireComments\Policies;
 
-
 use WireComments\Models\Comment;
 
 class CommentPolicy
