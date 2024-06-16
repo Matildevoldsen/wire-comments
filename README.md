@@ -1,93 +1,98 @@
-# :package_description
+# WireComments
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/:vendor_slug/:package_slug/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/:vendor_slug/:package_slug/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-<!--delete-->
----
-This repo can be used to scaffold a Laravel package. Follow these steps to get started:
-
-1. Press the "Use this template" button at the top of this repo to create a new repo with the contents of this skeleton.
-2. Run "php ./configure.php" to run a script that will replace all placeholders throughout all the files.
-3. Have fun creating your package.
-4. If you need help creating a package, consider picking up our <a href="https://laravelpackage.training">Laravel Package Training</a> video course.
----
-<!--/delete-->
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/:package_name.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/:package_name)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+WireComments is a Laravel package that provides a Livewire component for managing comments on any model using a `Commentable` trait. This package simplifies the process of displaying, creating, and paginating comments in a Laravel application.
 
 ## Installation
 
-You can install the package via composer:
+To install the WireComments package, you can use Composer:
 
 ```bash
-composer require :vendor_slug/:package_slug
+composer require matildevoldsen/wire-comments
 ```
 
-You can publish and run the migrations with:
+## Publishing Assets
+
+After installing the package, you need to publish the configuration, migrations, and view files. You can do this using the following Artisan command:
 
 ```bash
-php artisan vendor:publish --tag=":package_slug-migrations"
+php artisan vendor:publish --provider="Matildevoldsen\WireComments\WireCommentsServiceProvider"
+```
+
+This command will publish the following:
+
+- Configuration file to `config/wire-comments.php`
+- Migrations to `database/migrations`
+- Views to `resources/views/vendor/wire-comments`
+
+## Running Migrations
+
+Run the migrations to create the necessary tables for the comments:
+
+```bash
 php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag=":package_slug-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag=":package_slug-views"
 ```
 
 ## Usage
 
+To use the WireComments component, follow these steps:
+
+### Setting Up the Model
+
+Ensure your model uses the `Commentable` trait. For example, if you have a `Post` model:
+
 ```php
-$variable = new VendorName\Skeleton();
-echo $variable->echoPhrase('Hello, VendorName!');
+use Illuminate\Database\Eloquent\Model;
+use WireComments\Traits\Commentable;
+
+class Post extends Model
+{
+    use Commentable;
+
+    // Other model methods and properties
+}
 ```
 
-## Testing
+### Including the Component in a View
 
-```bash
-composer test
+You can include the `Comments` component in your Livewire views. For example, in a Blade view:
+
+```blade
+<livewire:comments :model="$post" />
 ```
 
-## Changelog
+Here, `$post` is an instance of your model that uses the `Commentable` trait.
 
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+### Customizing the Views
 
-## Contributing
+If you need to customize the views, you can modify the published views located in `resources/views/vendor/wire-comments`. The main component view is `components/comments.blade.php`.
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+### Using the Comment Form
 
-## Security Vulnerabilities
+The `Comments` component provides a form for creating new comments. Ensure that your application is set up to handle authentication and that users are logged in to post comments.
 
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+## Advanced Configuration
 
-## Credits
+You can further configure the package by modifying the published configuration file located at `config/wire-comments.php`. This file contains various settings that you can adjust according to your application's needs.
 
-- [:author_name](https://github.com/:author_username)
-- [All Contributors](../../contributors)
+## Example Blade View
 
-## License
+Here is an example of how to include the `Comments` component in a Blade view for a `Post` model:
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+```blade
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
+        <h1>{{ $post->title }}</h1>
+        <p>{{ $post->body }}</p>
+
+        <livewire:comments :model="$post" />
+    </div>
+@endsection
+```
+
+## Conclusion
+
+WireComments makes it easy to add commenting functionality to your Laravel models using Livewire. By following the steps above, you can quickly integrate and customize this package in your Laravel application.
+
+For more detailed information, refer to the [WireComments GitHub repository](https://github.com/Matildevoldsen/wire-comments).
