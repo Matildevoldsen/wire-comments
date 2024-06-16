@@ -31,11 +31,11 @@ class WireCommentsServiceProvider extends PackageServiceProvider
     public function packageBooted(): void
     {
         $prefix = config('wire-comments.prefix');
-        Livewire::component($prefix . 'comment-chunk', \WireComments\Components\CommentChunk::class);
-        Livewire::component($prefix . 'comment-item', \WireComments\Components\CommentItem::class);
-        Livewire::component($prefix . 'comments', \WireComments\Components\Comments::class);
-        Livewire::component($prefix . 'comment-reactions', \WireComments\Components\CommentReactions::class);
+        Livewire::component($prefix.'comment-chunk', \WireComments\Components\CommentChunk::class);
+        Livewire::component($prefix.'comment-item', \WireComments\Components\CommentItem::class);
+        Livewire::component($prefix.'comments', \WireComments\Components\Comments::class);
+        Livewire::component($prefix.'comment-reactions', \WireComments\Components\CommentReactions::class);
 
-        Blade::component($prefix . 'markdown-editor', \WireComments\Components\MarkdownEditor::class);
+        Blade::component($prefix.'markdown-editor', \WireComments\Components\MarkdownEditor::class);
     }
 }

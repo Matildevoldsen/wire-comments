@@ -14,7 +14,6 @@ return [
      *
      * Make sure to clear view cache after renaming
      *    php artisan view:clear
-     *
      */
-    'prefix' => ''
+    'prefix' => '',
 ];
