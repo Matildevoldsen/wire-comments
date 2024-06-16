@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace WireComments\Commands;
 
 use Illuminate\Console\Command;
 
