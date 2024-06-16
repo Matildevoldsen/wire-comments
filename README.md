@@ -15,7 +15,7 @@ composer require matildevoldsen/wire-comments
 After installing the package, you need to publish the configuration, migrations, and view files. You can do this using the following Artisan command:
 
 ```bash
-php artisan vendor:publish --provider="Matildevoldsen\WireComments\WireCommentsServiceProvider"
+ php artisan vendor:publish --provider="WireComments\WireCommentsServiceProvider"
 ```
 
 This command will publish the following:
