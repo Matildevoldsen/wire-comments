@@ -2,7 +2,7 @@
 
 namespace WireComments\Traits;
 
-use App\Models\Comment;
+use WireComments\Models\Comment;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 trait Commentable
