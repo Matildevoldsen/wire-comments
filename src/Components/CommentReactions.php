@@ -2,10 +2,10 @@
 
 namespace WireComments\Components;
 
-use WireComments\Models\Comment;
-use WireComments\Models\Reaction;
 use Illuminate\View\View;
 use Livewire\Component;
+use WireComments\Models\Comment;
+use WireComments\Models\Reaction;
 
 class CommentReactions extends Component
 {

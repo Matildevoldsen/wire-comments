@@ -2,9 +2,9 @@
 
 namespace WireComments\Components;
 
-use WireComments\Models\Comment;
 use Illuminate\View\View;
 use Livewire\Component;
+use WireComments\Models\Comment;
 
 class CommentChunk extends Component
 {
