@@ -6,6 +6,7 @@
         "wire-comments",
         "livewire comments"
     ],
+    "type": "library",
     "homepage": "https://github.com/:vendor_slug/:package_slug",
     "license": "MIT",
     "authors": [
