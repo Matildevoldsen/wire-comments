@@ -60,14 +60,6 @@ In your `app.blade.php` file, you need to include:
 @livewireScriptConfig
 ``
 
-### Adding Emoji's
-
-To add emoji's simply just add an array of emoji's to the livewire component:
-
-```bladehtml
-<livewire:comments :model="$post" :emojis="['👍', '👎', '❤️', '😂', '😯', '😢', '😡']" />
-```
-
 ### Including the Component in a View
 
 You can include the `Comments` component in your Livewire views. For example, in a Blade view:
@@ -77,6 +69,14 @@ You can include the `Comments` component in your Livewire views. For example, in
 ```
 
 Here, `$post` is an instance of your model that uses the `Commentable` trait.
+
+#### Adding Emoji's
+
+To add emoji's simply just add an array of emoji's to the livewire component:
+
+```bladehtml
+<livewire:comments :model="$post" :emojis="['👍', '👎', '❤️', '😂', '😯', '😢', '😡']" />
+```
 
 ### Customizing the Views
 
