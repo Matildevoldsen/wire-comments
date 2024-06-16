@@ -52,6 +52,14 @@ class Post extends Model
 }
 ```
 
+### 
+
+In your `app.blade.php` file, you need to include:
+
+``
+@livewireScriptConfig
+``
+
 ### Including the Component in a View
 
 You can include the `Comments` component in your Livewire views. For example, in a Blade view:
