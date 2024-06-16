@@ -10,8 +10,11 @@ use Livewire\Component;
 class CommentReactions extends Component
 {
     public Comment $comment;
+
     public $reactions;
+
     public array $displayedEmojis;
+
     public array $presetEmojis;
 
     protected $rules = [

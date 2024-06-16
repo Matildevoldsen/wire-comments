@@ -9,6 +9,7 @@ use Livewire\Component;
 class CommentChunk extends Component
 {
     public array $ids = [];
+
     public array $emojis;
 
     public function render(): View
@@ -26,11 +27,11 @@ class CommentChunk extends Component
                     'user',
                     'children' => function ($query) {
                         $query->oldest()->with('user');
-                    }
+                    },
                 ])
                 ->orderByRaw($orderClause)
                 ->latest()
-                ->get()
+                ->get(),
         ]);
     }
 }
