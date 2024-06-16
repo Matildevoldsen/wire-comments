@@ -66,31 +66,6 @@ Here, `$post` is an instance of your model that uses the `Commentable` trait.
 
 If you need to customize the views, you can modify the published views located in `resources/views/vendor/wire-comments`. The main component view is `components/comments.blade.php`.
 
-### Using the Comment Form
-
-The `Comments` component provides a form for creating new comments. Ensure that your application is set up to handle authentication and that users are logged in to post comments.
-
-## Advanced Configuration
-
-You can further configure the package by modifying the published configuration file located at `config/wire-comments.php`. This file contains various settings that you can adjust according to your application's needs.
-
-## Example Blade View
-
-Here is an example of how to include the `Comments` component in a Blade view for a `Post` model:
-
-```blade
-@extends('layouts.app')
-
-@section('content')
-    <div class="container">
-        <h1>{{ $post->title }}</h1>
-        <p>{{ $post->body }}</p>
-
-        <livewire:comments :model="$post" />
-    </div>
-@endsection
-```
-
 ## Directives
 
 WireComments provides you with a alphine directive for date-time formatting. 
