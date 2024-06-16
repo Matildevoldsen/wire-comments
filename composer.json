@@ -6,7 +6,7 @@
         "wire-comments",
         "livewire comments"
     ],
-    "version": "0.1.9",
+    "version": "0.2.0",
     "type": "library",
     "homepage": "https://github.com/:vendor_slug/:package_slug",
     "license": "MIT",
