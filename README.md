@@ -78,6 +78,8 @@ To add emoji's simply just add an array of emoji's to the livewire component:
 <livewire:comments :model="$post" :emojis="['👍', '👎', '❤️', '😂', '😯', '😢', '😡']" />
 ```
 
+If the emojis are not set, reactions will be disabled.
+
 ### Customizing the Views
 
 If you need to customize the views, you can modify the published views located in `resources/views/vendor/wire-comments`. The main component view is `components/comments.blade.php`.
