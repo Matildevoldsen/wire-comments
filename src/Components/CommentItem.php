@@ -13,10 +13,15 @@ use Livewire\Component;
 class CommentItem extends Component
 {
     public Comment $comment;
+
     public CreateComment $replyForm;
+
     public EditComment $editForm;
+
     public bool $deleted = false;
+
     public int $limit = 10;
+
     public array $emojis;
 
     public function mount(): void
@@ -60,7 +65,7 @@ class CommentItem extends Component
      */
     public function edit(): void
     {
-        $this->authorize('edit',$this->comment);
+        $this->authorize('edit', $this->comment);
         $this->editForm->validate();
 
         $this->comment->update($this->editForm->only('body'));

@@ -12,8 +12,11 @@ use Livewire\Component;
 class Comments extends Component
 {
     public Model $model;
+
     public CreateComment $form;
+
     public int $page = 1;
+
     public array $emojis;
 
     public array $chunks = [];
@@ -27,7 +30,6 @@ class Comments extends Component
             ->toArray();
     }
 
-
     #[Computed()]
     public function commentsCount(): int
     {
@@ -36,7 +38,7 @@ class Comments extends Component
 
     public function loadMore(): void
     {
-        if (!$this->hasMorePages()) {
+        if (! $this->hasMorePages()) {
             return;
         }
 

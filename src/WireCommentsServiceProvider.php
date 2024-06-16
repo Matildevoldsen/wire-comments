@@ -23,7 +23,7 @@ class WireCommentsServiceProvider extends PackageServiceProvider
             ->hasViews()
             ->hasMigrations([
                 'create_comments_table',
-                'create_reactions_table'
+                'create_reactions_table',
             ])
             ->hasCommand(SkeletonCommand::class);
     }
