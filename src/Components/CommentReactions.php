@@ -17,7 +17,7 @@ class CommentReactions extends Component
 
     public array $presetEmojis;
 
-    protected $rules = [
+    protected array $rules = [
         'emoji' => 'required|string|max:255',
     ];
 

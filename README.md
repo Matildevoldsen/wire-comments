@@ -125,13 +125,30 @@ export default (el) => {
     }
 
     const setHumanTime = () => {
-        el.innerText = dayjs().tz().to(dayjs.tz(datetime))
+        el.innerHTML = `<time title="${dayjs().tz().to(dayjs.tz(datetime))}" datetime="${dayjs().tz().to(dayjs.tz(datetime))}">${dayjs().tz().to(dayjs.tz(datetime))}</time>`
     }
 
     setHumanTime()
     setInterval(setHumanTime, 30000)
 }
 ```
+
+### Markdown Editor
+
+This package also includes a basis, markdown editor component.
+
+````bladehtml
+<x-markdown-editor :options="['b', 'i', 'h1', 'h2', 'ul', 'ol']" wire:model="markdownEditor"/>
+````
+
+Currently it only supports the following options:
+
+- Bold
+- Italic
+- Heading 1
+- Heading 2
+- Unordered List
+- Ordered List
 
 ## Conclusion
 

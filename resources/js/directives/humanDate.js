@@ -17,7 +17,7 @@ export default (el) => {
     }
 
     const setHumanTime = () => {
-        el.innerText = dayjs().tz().to(dayjs.tz(datetime))
+        el.innerHTML = `<time title="${dayjs().tz().to(dayjs.tz(datetime))}" datetime="${dayjs().tz().to(dayjs.tz(datetime))}">${dayjs().tz().to(dayjs.tz(datetime))}</time>`
     }
 
     setHumanTime()
