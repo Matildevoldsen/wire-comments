@@ -91,6 +91,25 @@ Here is an example of how to include the `Comments` component in a Blade view fo
 @endsection
 ```
 
+## Directives
+
+WireComments provides you with a alphine directive for date-time formatting. 
+
+This directive uses the `dayjs` library to format the date-time. To use this directive, you need to include the `dayjs` library in your project.
+
+
+```javascript
+// app.js
+import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm.js';
+import humanDate from "../../vendor/matildevoldsen/wire-comments/resources/js/directives/humanDate.js";
+
+Alpine.directive('human-date', humanDate)
+
+Livewire.start()
+```
+
+```html
+
 ## Conclusion
 
 WireComments makes it easy to add commenting functionality to your Laravel models using Livewire. By following the steps above, you can quickly integrate and customize this package in your Laravel application.
