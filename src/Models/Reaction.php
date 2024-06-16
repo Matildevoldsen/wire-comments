@@ -20,6 +20,7 @@ class Reaction extends Model
     {
         return $this->belongsTo(config('auth.providers.users.model'));
     }
+
     public function comment(): BelongsTo
     {
         return $this->belongsTo(Comment::class);
