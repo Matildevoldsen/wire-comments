@@ -2,12 +2,12 @@
 
 namespace WireComments\Components;
 
-use App\Livewire\Forms\CreateComment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
+use WireComments\Components\Forms\CreateComment;
 
 class Comments extends Component
 {

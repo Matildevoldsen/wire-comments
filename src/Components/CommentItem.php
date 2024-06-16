@@ -2,12 +2,12 @@
 
 namespace WireComments\Components;
 
-use App\Livewire\Forms\CreateComment;
-use App\Livewire\Forms\EditComment;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 use Livewire\Component;
+use WireComments\Components\Forms\CreateComment;
+use WireComments\Components\Forms\EditComment;
 use WireComments\Models\Comment;
 
 class CommentItem extends Component

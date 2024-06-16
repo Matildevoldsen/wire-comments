@@ -3,7 +3,7 @@
 namespace WireComments\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use WireComments\Skeleton\WireCommentsServiceProvider;
+use WireComments\WireCommentsServiceProvider;
 
 /**
  * @see \VendorName\Skeleton\Skeleton
