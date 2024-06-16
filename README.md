@@ -108,7 +108,39 @@ Alpine.directive('human-date', humanDate)
 Livewire.start()
 ```
 
-```html
+### Create your own custom directive
+
+You can easily create your own custom directive to fit your needs. Here is an example on how to do it with `dayjs`.
+
+```javascript
+//humanDate.js
+
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import utc from 'dayjs/plugin/utc'
+import timezone from 'dayjs/plugin/timezone'
+
+dayjs.extend(relativeTime)
+dayjs.extend(utc)
+dayjs.extend(timezone)
+
+dayjs.tz.setDefault('UTC')
+
+export default (el) => {
+    let datetime = el.getAttribute('datetime')
+
+    if (!datetime) {
+        return
+    }
+
+    const setHumanTime = () => {
+        el.innerText = dayjs().tz().to(dayjs.tz(datetime))
+    }
+
+    setHumanTime()
+    setInterval(setHumanTime, 30000)
+}
+```
 
 ## Conclusion
 
