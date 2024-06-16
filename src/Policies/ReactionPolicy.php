@@ -2,7 +2,6 @@
 
 namespace WireComments\Policies;
 
-
 use WireComments\Models\Reaction;
 
 class ReactionPolicy
