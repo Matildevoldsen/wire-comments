@@ -1,0 +1,26 @@
+{
+  "name": "wire-comments",
+  "version": "1.0.0",
+  "description": "WireComments is a Laravel package that provides a Livewire component for managing comments on any model using a `Commentable` trait. This package simplifies the process of displaying, creating, and paginating comments in a Laravel application.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matildevoldsen/wire-comments.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Matildevoldsen/wire-comments/issues"
+  },
+  "homepage": "https://github.com/Matildevoldsen/wire-comments#readme",
+  "dependencies": {
+    "dayjs": "^1.11.11"
+  }
+}
