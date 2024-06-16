@@ -2,7 +2,7 @@
 
 namespace WireComments\Components;
 
-use App\Models\Comment;
+use WireComments\Models\Comment;
 use Illuminate\View\View;
 use Livewire\Component;
 

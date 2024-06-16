@@ -4,7 +4,7 @@ namespace WireComments\Components;
 
 use App\Livewire\Forms\CreateComment;
 use App\Livewire\Forms\EditComment;
-use App\Models\Comment;
+use WireComments\Models\Comment;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;

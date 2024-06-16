@@ -2,8 +2,8 @@
 
 namespace WireComments\Components;
 
-use App\Models\Comment;
-use App\Models\Reaction;
+use WireComments\Models\Comment;
+use WireComments\Models\Reaction;
 use Illuminate\View\View;
 use Livewire\Component;
 
