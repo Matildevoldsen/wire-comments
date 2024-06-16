@@ -21,7 +21,7 @@ class Comment extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(config('auth.providers.users.model', App\Models\User::class));
     }
 
     public function children(): HasMany
