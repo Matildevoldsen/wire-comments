@@ -2,6 +2,8 @@
 
 WireComments is a Laravel package that provides a Livewire component for managing comments on any model using a `Commentable` trait. This package simplifies the process of displaying, creating, and paginating comments in a Laravel application.
 
+![WireComments](https://i.imgur.com/7wdnbPy.png)
+
 ## Installation
 
 To install the WireComments package, you can use Composer:
