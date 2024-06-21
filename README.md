@@ -82,6 +82,22 @@ To add emoji's simply just add an array of emoji's to the livewire component:
 
 If the emojis are not set, reactions will be disabled.
 
+#### Allowing Guests
+
+Allowing guest commenting is disabled by default. Below is an example on how to enable guests.
+
+```bladehtml
+<livewire:comments allowGuests :model="$card"/>
+```
+
+#### Max Depth for replies
+
+If you want to increment the max depth for replies simply add ``maxDepth="3"``. There is no limit on the maximum depth.
+
+```bladehtml
+<livewire:comments maxDepth="3" :model="$card"/>
+```
+
 ### Customizing the Views
 
 If you need to customize the views, you can modify the published views located in `resources/views/vendor/wire-comments`. The main component view is `components/comments.blade.php`.
