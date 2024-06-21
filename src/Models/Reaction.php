@@ -14,6 +14,7 @@ class Reaction extends Model
         'user_id',
         'comment_id',
         'emoji',
+        'guest_id'
     ];
 
     public function user(): BelongsTo
