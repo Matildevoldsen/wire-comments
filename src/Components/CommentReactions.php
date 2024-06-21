@@ -15,6 +15,7 @@ class CommentReactions extends Component
     public Comment $comment;
 
     public $reactions;
+
     public bool $allowGuests = false;
 
     public array $displayedEmojis;
@@ -41,7 +42,7 @@ class CommentReactions extends Component
             ->when($userId, function ($query) use ($userId) {
                 return $query->where('user_id', $userId);
             })
-            ->when(!$userId && $guest_id, function ($query) use ($guest_id) {
+            ->when(! $userId && $guest_id, function ($query) use ($guest_id) {
                 return $query->where('guest_id', $guest_id);
             })
             ->first();
@@ -62,7 +63,7 @@ class CommentReactions extends Component
                 Reaction::create([
                     'comment_id' => $this->comment->id,
                     'emoji' => $emoji,
-                    'guest_id' => $guest_id
+                    'guest_id' => $guest_id,
                 ]);
             }
         }
@@ -73,11 +74,11 @@ class CommentReactions extends Component
 
     public function authorizeGuest(): bool
     {
-        if (!$this->allowGuests) {
+        if (! $this->allowGuests) {
             return false;
         }
 
-        if (!Cookie::get('guest_id')) {
+        if (! Cookie::get('guest_id')) {
             return false;
         }
 
@@ -89,7 +90,7 @@ class CommentReactions extends Component
      */
     private function authorizeReaction(Reaction $existingReaction): bool|\Illuminate\Auth\Access\Response
     {
-        if (!$this->allowGuests) {
+        if (! $this->allowGuests) {
             return false;
         }
 
@@ -114,13 +115,13 @@ class CommentReactions extends Component
         if ($userId) {
             // Check reactions for authenticated user
             return $this->reactions->where('emoji', $emoji)
-                    ->where('user_id', $userId)
-                    ->count() > 0;
+                ->where('user_id', $userId)
+                ->count() > 0;
         } elseif ($guestId) {
             // Check reactions for guest with a valid guest_id
             return $this->reactions->where('emoji', $emoji)
-                    ->where('guest_id', $guestId)
-                    ->count() > 0;
+                ->where('guest_id', $guestId)
+                ->count() > 0;
         }
 
         // If no user_id and no valid guest_id, return false

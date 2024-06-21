@@ -15,8 +15,11 @@ use WireComments\Models\Comment;
 class CommentItem extends Component
 {
     public int $depth = 0;
+
     public int $maxDepth = 3;
+
     public Comment $comment;
+
     public bool $allowGuests = false;
 
     public CreateComment $replyForm;
@@ -65,7 +68,7 @@ class CommentItem extends Component
      */
     public function delete(): void
     {
-        if (!$this->authorizeGuest()) {
+        if (! $this->authorizeGuest()) {
             $this->authorize('delete', $this->comment);
         }
         $this->comment->delete();
@@ -79,7 +82,7 @@ class CommentItem extends Component
      */
     public function edit(): void
     {
-        if (!$this->authorizeGuest()) {
+        if (! $this->authorizeGuest()) {
             $this->authorize('edit', $this->comment);
         }
 
@@ -92,11 +95,11 @@ class CommentItem extends Component
 
     public function authorizeGuest(): bool
     {
-        if (!$this->allowGuests) {
+        if (! $this->allowGuests) {
             return false;
         }
 
-        if (!Cookie::get('guest_id')) {
+        if (! Cookie::get('guest_id')) {
             return false;
         }
 
