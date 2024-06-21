@@ -16,7 +16,7 @@ class CommentChunk extends Component
 
     public array $emojis;
 
-    public function render(): View
+    public function render(): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
     {
         $orderClause = 'CASE ';
         foreach ($this->ids as $index => $id) {

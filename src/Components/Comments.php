@@ -27,12 +27,14 @@ class Comments extends Component
 
     public bool $allowGuests = false;
 
+    public int $articlesLimit = 10;
+
     public function mount(): void
     {
         $this->chunks = $this->model->comments()
             ->latest()
             ->pluck('id')
-            ->chunk(10)
+            ->chunk($this->articlesLimit)
             ->toArray();
     }
 
