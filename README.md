@@ -4,6 +4,20 @@ WireComments is a Laravel package that provides a Livewire component for managin
 
 ![WireComments](https://i.imgur.com/7wdnbPy.png)
 
+## Compatability 
+
+Sure! Here's a GitHub table indicating the compatibility of WireComments with Livewire and Laravel versions:
+
+## Compatibility Table
+
+WireComments is compatible with the following versions and dependencies:
+
+| Feature                   | Supported Version |
+|---------------------------|------------------|
+| **Livewire**              | ^3.1             |
+| **Minimum Laravel Version** | 10.0             |
+ | **PHP**                   | 8.2              |
+
 ## Installation
 
 To install the WireComments package, you can use Composer:
@@ -74,7 +88,7 @@ Here, `$post` is an instance of your model that uses the `Commentable` trait.
 
 #### Adding Emoji's
 
-To add emoji's simply just add an array of emoji's to the livewire component:
+To add emojis, simply pass an array of emojis to the Livewire component:
 
 ```bladehtml
 <livewire:comments :model="$post" :emojis="['👍', '👎', '❤️', '😂', '😯', '😢', '😡']" />
@@ -84,7 +98,7 @@ If the emojis are not set, reactions will be disabled.
 
 #### Allowing Guests
 
-Allowing guest commenting is disabled by default. Below is an example on how to enable guests.
+Allowing guest commenting is disabled by default. To enable guest comments, pass the allowGuests parameter:
 
 ```bladehtml
 <livewire:comments allowGuests :model="$card"/>
@@ -92,10 +106,18 @@ Allowing guest commenting is disabled by default. Below is an example on how to 
 
 #### Max Depth for replies
 
-If you want to increment the max depth for replies simply add ``maxDepth="3"``. There is no limit on the maximum depth.
+To set the maximum depth for replies, use the maxDepth attribute. There is no limit on the maximum depth:
 
 ```bladehtml
 <livewire:comments maxDepth="3" :model="$card"/>
+```
+
+#### Article Limits
+
+You can limit the number of articles chunked by setting the `articlesLimit` value.
+
+```bladehtml
+<livewire:comments :model="$post" articlesLimit="5"/>
 ```
 
 ### Customizing the Views
