@@ -14,12 +14,19 @@
                         <div class="font-semibold text-white">
                             {{ $comment->user->name ?? '[deleted user]' }}
                         </div>
-                    @elseif($this->allowGuests || auth()->user())
+                    @elseif($comment->guest_id || $comment->user_id)
                         <img src="{{ $comment->user->profile_photo_url ?? 'https://ui-avatars.com/api/name=guest' }}"
                              alt="Guest User"
                              class="size-8 bg-black rounded-full"/>
                         <div class="font-semibold text-white">
                             Guest User
+                        </div>
+                    @else
+                        <img src="{{ $comment->user->profile_photo_url ?? 'https://ui-avatars.com/api/name=du' }}"
+                             alt="{{ $comment->user->name ?? '' }}"
+                             class="size-8 bg-black rounded-full"/>
+                        <div class="font-semibold text-white">
+                            {{ $comment->user->name ?? '[deleted user]' }}
                         </div>
                     @endif
                     <div class="text-sm text-gray-400" x-human-date
