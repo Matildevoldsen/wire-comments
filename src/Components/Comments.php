@@ -16,6 +16,7 @@ class Comments extends Component
     public Model $model;
 
     public CreateComment $form;
+
     public int $maxDepth = 3;
 
     public int $page = 1;
@@ -23,6 +24,7 @@ class Comments extends Component
     public array $emojis;
 
     public array $chunks = [];
+
     public bool $allowGuests = false;
 
     public function mount(): void
@@ -42,7 +44,7 @@ class Comments extends Component
 
     public function loadMore(): void
     {
-        if (!$this->hasMorePages()) {
+        if (! $this->hasMorePages()) {
             return;
         }
 

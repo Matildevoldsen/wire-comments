@@ -25,7 +25,7 @@ class WireCommentsServiceProvider extends PackageServiceProvider
                 '2024_06_15_create_comments_table',
                 '2024_06_15_create_reactions_table',
                 '2024_06_17_add_guest_to_comments_table',
-                '2024_06_17_add_guest_to_reactions_table'
+                '2024_06_17_add_guest_to_reactions_table',
             ])
             ->hasCommand(SkeletonCommand::class);
     }

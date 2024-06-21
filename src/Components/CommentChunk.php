@@ -9,7 +9,9 @@ use WireComments\Models\Comment;
 class CommentChunk extends Component
 {
     public array $ids = [];
+
     public int $maxDepth = 3;
+
     public bool $allowGuests = false;
 
     public array $emojis;
