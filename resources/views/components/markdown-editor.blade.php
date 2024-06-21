@@ -4,10 +4,13 @@
     $editorId = uniqid('markdown-editor-');
 @endphp
 
-<div class="wysiwyg-editor border rounded-lg shadow-sm p-4 bg-white" id="editor-container-{{ $editorId }}">
-    <div class="toolbar flex space-x-2 mb-4 border-b pb-2">
+<div x-data="{ preview: false, content: @entangle($attributes->wire('model')) }"
+     class="wysiwyg-editor border rounded-lg shadow-sm dark:border-0 p-4 bg-white dark:bg-gray-900"
+     id="editor-container-{{ $editorId }}">
+    <div class="toolbar flex space-x-2 mb-4 dark:border-0 border-b pb-2">
         @foreach ($options as $option)
-            <button type="button" class="px-2 py-1 hover:bg-gray-200 text-gray-700 rounded focus:outline-none"
+            <button type="button"
+                    class="px-2 py-1 hover:bg-gray-200 dark:border-0 dark:hover:bg-gray-800 dark:text-gray-200 text-gray-700 rounded focus:outline-none"
                     id="btn-{{ $option }}-{{ $editorId }}"
                     onclick="applyMarkdownOption('{{ $option }}', '{{ $editorId }}')">
                 @if($option === 'b')
@@ -30,21 +33,33 @@
             </button>
         @endforeach
     </div>
-    <textarea
-        {{ $disabled ? 'disabled' : '' }}
-        wire:model="{{ $attributes->wire('model')->value() }}"
-        {!! $attributes->merge(['class' => 'border-none !ring-0 !outline-none rounded-md shadow-sm w-full h-64 p-3']) !!}
-        id="{{ $editorId }}"
-    ></textarea>
+    <template x-if="!preview">
+        <textarea
+            {{ $disabled ? 'disabled' : '' }}
+            wire:model="{{ $attributes->wire('model')->value() }}"
+            {!! $attributes->merge(['class' => 'dark:bg-gray-900 dark:text-gray-100 border-none !ring-0 !outline-none rounded-md shadow-sm w-full h-64 p-3']) !!}
+            id="{{ $editorId }}"
+        ></textarea>
+    </template>
+    <template x-if="preview">
+        <div class="dark:bg-gray-900 dark:text-gray-100 border-none !ring-0 !outline-none rounded-md shadow-sm w-full h-64 p-3" x-html="markdownToHtml(content)"></div>
+    </template>
+    <button type="button" x-show="!preview" x-on:click="preview = !preview">
+        preview
+    </button>
+    <button type="button" x-show="preview" x-on:click="preview = !preview">
+        edit
+    </button>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/markdown-it/dist/markdown-it.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const md = window.markdownit();
 
-        window.applyMarkdownOption = function(option, editorId) {
+        window.applyMarkdownOption = function (option, editorId) {
             const textarea = document.getElementById(editorId);
+
             const start = textarea.selectionStart;
             const end = textarea.selectionEnd;
             const selectedText = textarea.value.substring(start, end);
@@ -144,7 +159,7 @@
             const editorId = editor.querySelector('textarea').id;
             const textarea = document.getElementById(editorId);
 
-            textarea.addEventListener('keydown', function(e) {
+            textarea.addEventListener('keydown', function (e) {
                 if (e.key === 'Enter') {
                     const start = textarea.selectionStart;
                     const end = textarea.selectionEnd;
@@ -168,16 +183,20 @@
                 }
             });
 
-            textarea.addEventListener('keyup', function() {
+            textarea.addEventListener('keyup', function () {
                 updateButtonHighlight(editorId);
             });
 
-            textarea.addEventListener('mouseup', function() {
+            textarea.addEventListener('mouseup', function () {
                 updateButtonHighlight(editorId);
             });
 
             // Initial highlight update
             updateButtonHighlight(editorId);
         });
+
+        window.markdownToHtml = (content) => {
+            return md.render(content);
+        };
     });
 </script>
