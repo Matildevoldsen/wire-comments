@@ -80,13 +80,13 @@
 
                             <!-- Popover content -->
                             <div x-show="open" @click.away="open = false" x-transition
-                                 class="absolute mt-2 w-48 bg-gray-800 rounded shadow-lg py-2">
-                                <div class="px-4 py-2 text-white">
+                                 class="absolute mt-2 w-48 bg-white dark:bg-gray-800 rounded shadow-lg py-2">
+                                <div class="px-4 py-2 text-gray-700 dark:text-white">
                                     <p>Are you sure you want to delete your comment?</p>
                                     <button
                                             type="button"
                                             wire:click="delete"
-                                            class="inline-flex mt-2 items-center px-4 py-2 bg-red-500 border border-transparent rounded-md font-semibold text-xs uppercase tracking-widest hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 transition ease-in-out duration-150">
+                                            class="inline-flex mt-2 items-center px-4 py-2 bg-red-500 border text-white border-transparent rounded-md font-semibold text-xs uppercase tracking-widest hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 transition ease-in-out duration-150">
                                         Delete
                                     </button>
                                 </div>
