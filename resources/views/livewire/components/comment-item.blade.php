@@ -145,7 +145,7 @@
                 @if ($comment->children->count())
                     @if ($depth < $maxDepth)
                         @foreach($comment->children as $child)
-                            <div class="ml-8 mt-8 border-b border-gray-700 last:border-b-0" wire:key="{{ $child->id }}">
+                            <div class="ml-8 mt-8" wire:key="{{ $child->id }}">
                                 <livewire:comment-item :allowGuests="$allowGuests" :emojis="$emojis" :key="$child->id"
                                                        :comment="$child"
                                                        :depth="$depth + 1" :max-depth="$maxDepth"/>
