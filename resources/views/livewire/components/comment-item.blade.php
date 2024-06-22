@@ -53,7 +53,7 @@
                         </form>
                     </template>
                 @endif
-                <div x-show="!editing" class="mt-4 text-white">
+                <div x-show="!editing" class="mt-4 dark:text-white">
                     @markdown{!! $comment->body !!}@endmarkdown
                     @if ($emojis)
                         <div class="mt-2">
