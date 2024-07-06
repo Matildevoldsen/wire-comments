@@ -99,7 +99,7 @@ class CommentItem extends Component
             return false;
         }
 
-        if (! Cookie::get('guest_id') ) {
+        if (! Cookie::get('guest_id')) {
             return false;
         }
 
