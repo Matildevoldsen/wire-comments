@@ -5,7 +5,15 @@ namespace WireComments\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-
+/**
+ * Class Reaction
+ * @package WireComments\Models
+ *
+ * @property int $comment_id
+ * @property string $emoji
+ * @property int $user_id
+ * @property int $guest_id
+ */
 class Reaction extends Model
 {
     use HasFactory;
