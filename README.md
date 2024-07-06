@@ -28,25 +28,18 @@ composer require matildevoldsen/wire-comments
 
 ## Publishing Assets
 
-After installing the package, you need to publish the configuration, migrations, and view files. You can do this using the following Artisan command:
+To install the WireComments package, use the following Artisan command:
 
 ```bash
- php artisan vendor:publish --provider="WireComments\WireCommentsServiceProvider"
+php artisan wire-comments:install
 ```
 
-This command will publish the following:
+This command will:
 
-- Configuration file to `config/wire-comments.php`
-- Migrations to `database/migrations`
-- Views to `resources/views/vendor/wire-comments`
-
-## Running Migrations
-
-Run the migrations to create the necessary tables for the comments:
-
-```bash
-php artisan migrate
-```
+- Publish the service provider & migrations.
+- Prompt you to publish the view files
+- Prompt you to run the migrations
+- Publish the configuration file
 
 ## Usage
 

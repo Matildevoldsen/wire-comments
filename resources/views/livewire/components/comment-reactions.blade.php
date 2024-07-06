@@ -4,7 +4,7 @@
             @if ($allowGuests || auth()->user())
                 <button
                     wire:click="toggleReaction('{{ $emoji }}')"
-                    class="flex items-center space-x-1 bg-gray-100 dark:bg-gray-900 dark:text-gray-300 p-1 rounded {{ $this->hasUserReacted($emoji) ? 'bg-blue-200 dark:bg-blue-500' : '' }}"
+                    class="flex items-center space-x-1 bg-gray-100 dark:bg-gray-900 dark:text-gray-300 p-1 rounded {{ $this->hasUserReacted($emoji) ? '!text-white !bg-blue-500' : '' }}"
                 >
                     <span class="transition-transform transform hover:scale-110">{{ $emoji }}</span>
                     <span class="text-xs">{{ $this->getReactionCount($emoji) }}</span>

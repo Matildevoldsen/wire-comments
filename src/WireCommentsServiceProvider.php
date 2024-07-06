@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Blade;
 use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use WireComments\Commands\SkeletonCommand;
+use WireComments\Commands\InstallCommand;
 
 class WireCommentsServiceProvider extends PackageServiceProvider
 {
@@ -27,7 +27,7 @@ class WireCommentsServiceProvider extends PackageServiceProvider
                 '2024_06_17_add_guest_to_comments_table',
                 '2024_06_17_add_guest_to_reactions_table',
             ])
-            ->hasCommand(SkeletonCommand::class);
+            ->hasCommand(InstallCommand::class);
     }
 
     public function packageBooted(): void
