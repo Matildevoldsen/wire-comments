@@ -45,7 +45,7 @@ class CommentItem extends Component
     {
         $this->replyForm->validate();
 
-        $guest_id = Cookie::get('guest_id') ?? Str::uuid();
+        $guest_id = (string) Cookie::get('guest_id') ?? (string) Str::uuid();
 
         $reply = $this->comment->children()->make($this->replyForm->only('body'));
         if (auth()->user()) {
@@ -99,7 +99,7 @@ class CommentItem extends Component
             return false;
         }
 
-        if (! Cookie::get('guest_id')) {
+        if (! Cookie::get('guest_id') ) {
             return false;
         }
 

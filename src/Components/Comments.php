@@ -67,7 +67,7 @@ class Comments extends Component
 
         $comment = $this->model->comments()->make($this->form->only('body'));
 
-        $guest_id = Cookie::get('guest_id') ?? Str::uuid();
+        $guest_id = Cookie::get('guest_id') ?? (string) Str::uuid();
         if (auth()->user()) {
             $comment->user()->associate(auth()->user());
         } else {

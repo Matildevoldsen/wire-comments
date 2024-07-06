@@ -82,7 +82,7 @@ class CommentReactions extends Component
             return false;
         }
 
-        return Cookie::get('guest_id') === $this->comment->guest_id;
+        return (string) Cookie::get('guest_id') === (string) $this->comment->guest_id;
     }
 
     /**
@@ -94,7 +94,7 @@ class CommentReactions extends Component
             return false;
         }
 
-        if ($existingReaction->guest_id === Cookie::get('guest_id')) {
+        if ((string) $existingReaction->guest_id === (string) Cookie::get('guest_id')) {
             return true;
         }
 
