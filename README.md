@@ -4,11 +4,7 @@ WireComments is a Laravel package that provides a Livewire component for managin
 
 ![WireComments](https://i.imgur.com/7wdnbPy.png)
 
-## Compatability 
-
-Sure! Here's a GitHub table indicating the compatibility of WireComments with Livewire and Laravel versions:
-
-## Compatibility Table
+## Compatibility
 
 WireComments is compatible with the following versions and dependencies:
 
