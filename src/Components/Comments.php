@@ -72,9 +72,8 @@ class Comments extends Component
             $comment->user()->associate(auth()->user());
         } else {
             Cookie::queue('guest_id', $guest_id, 60 * 24 * 365);
+            $comment->guest_id = $guest_id;
         }
-
-        $comment->guest_id = $guest_id;
 
         $this->form->reset();
 
