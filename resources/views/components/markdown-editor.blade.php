@@ -37,17 +37,17 @@
         <textarea
             {{ $disabled ? 'disabled' : '' }}
             wire:model="{{ $attributes->wire('model')->value() }}"
-            {!! $attributes->merge(['class' => 'dark:bg-gray-900 dark:text-gray-100 border-none !ring-0 !outline-none rounded-md shadow-sm w-full h-64 p-3']) !!}
+            {!! $attributes->merge(['class' => 'bg-white dark:bg-gray-900 dark:text-gray-100 border-none !ring-0 !outline-none rounded-md shadow-sm w-full h-64 p-3']) !!}
             id="{{ $editorId }}"
         ></textarea>
     </template>
     <template x-if="preview">
         <div class="dark:bg-gray-900 dark:text-gray-100 border-none !ring-0 !outline-none rounded-md shadow-sm w-full h-64 p-3" x-html="markdownToHtml(content)"></div>
     </template>
-    <button type="button" x-show="!preview" x-on:click="preview = !preview">
+    <button class="dark:text-gray-200" type="button" x-show="!preview" x-on:click="preview = !preview">
         preview
     </button>
-    <button type="button" x-show="preview" x-on:click="preview = !preview">
+    <button class="dark:text-gray-200" type="button" x-show="preview" x-on:click="preview = !preview">
         edit
     </button>
 </div>
