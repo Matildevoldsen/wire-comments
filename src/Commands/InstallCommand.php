@@ -4,6 +4,7 @@ namespace WireComments\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
+use Symfony\Component\Process\Process;
 
 class InstallCommand extends Command
 {
@@ -37,11 +38,49 @@ class InstallCommand extends Command
         Artisan::call('vendor:publish', [
             '--tag' => 'wire-comments-config',
         ]);
-
         $this->info('Config file published successfully.');
+
+        // Ask if the user wants to install dayjs
+        if ($this->confirm('Do you want to install dayjs?')) {
+            // Ask if the user wants to use npm or yarn
+            $packageManager = $this->choice('Which package manager do you want to use?', ['npm', 'yarn'], 0);
+            $this->installDayjs($packageManager);
+        }
 
         $this->comment('WireComments installed successfully.');
 
         return self::SUCCESS;
+    }
+
+    protected function installDayjs(string $packageManager): void
+    {
+        $command = $packageManager === 'npm' ? ['npm', 'install', 'dayjs'] : ['yarn', 'add', 'dayjs'];
+        $process = new Process($command);
+        $process->setTty(true);
+        $process->run(function ($type, $buffer) {
+            echo $buffer;
+        });
+
+        if ($process->isSuccessful()) {
+            $this->info('dayjs installed successfully.');
+        } else {
+            $this->error('Failed to install dayjs.');
+        }
+
+        // Run npm install or yarn install
+        $installCommand = $packageManager === 'npm' ? ['npm', 'install'] : ['yarn', 'install'];
+        $process = new Process($installCommand);
+        $process->setTty(true);
+        $process->run(function ($type, $buffer) {
+            echo $buffer;
+        });
+
+        if ($process->isSuccessful()) {
+            $this->info('Dependencies installed successfully.');
+        } else {
+            $this->error('Failed to install dependencies.');
+
+            $this->error($process->getErrorOutput());
+        }
     }
 }
