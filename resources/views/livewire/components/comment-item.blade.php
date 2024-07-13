@@ -127,7 +127,7 @@
                     <form wire:submit="reply" class="mt-4">
                         <div class="mb-4">
                             <x-markdown-editor :options="['b', 'i', 'h1', 'h2', 'ul', 'ol']" wire:model="replyForm.body"
-                                               placeholder="Reply to {{ $comment->user->name ?? '[deleted user]' }}"
+                                               placeholder="{{ $this->getReplyToText() }}"
                                                class="w-full"
                                                rows="4"/>
                             @error('replyForm.body')

@@ -93,6 +93,25 @@ class CommentItem extends Component
         $this->dispatch('edited', $this->comment->id);
     }
 
+    public function getReplyToText(): string
+    {
+        $name = null;
+
+        if (isset($this->comment->user->name)) {
+            $name = $this->comment->user->name;
+        }
+
+        if (!isset($this->comment->user->name) && $this->comment->guest_id) {
+            $name = 'guest';
+        }
+
+        if (!isset($this->comment->user->name) && !$this->comment->guest_id) {
+            $name = '[deleted user]';
+        }
+
+        return "Reply to " . $name;
+    }
+
     public function authorizeGuest(): bool
     {
         if (! $this->allowGuests) {
