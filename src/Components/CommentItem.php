@@ -101,15 +101,15 @@ class CommentItem extends Component
             $name = $this->comment->user->name;
         }
 
-        if (!isset($this->comment->user->name) && $this->comment->guest_id) {
+        if (! isset($this->comment->user->name) && $this->comment->guest_id) {
             $name = 'guest';
         }
 
-        if (!isset($this->comment->user->name) && !$this->comment->guest_id) {
+        if (! isset($this->comment->user->name) && ! $this->comment->guest_id) {
             $name = '[deleted user]';
         }
 
-        return "Reply to " . $name;
+        return 'Reply to '.$name;
     }
 
     public function authorizeGuest(): bool
