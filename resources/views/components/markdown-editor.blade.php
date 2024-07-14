@@ -37,7 +37,7 @@
         <textarea
             {{ $disabled ? 'disabled' : '' }}
             wire:model="{{ $attributes->wire('model')->value() }}"
-            {!! $attributes->merge(['class' => 'bg-white dark:bg-gray-900 dark:text-gray-100 border-none !ring-0 !outline-none rounded-md shadow-sm w-full h-64 p-3']) !!}
+            {!! $attributes->merge(['class' => 'bg-white dark:bg-gray-900 !text-gray-800 dark:text-gray-100 border-none !ring-0 !outline-none rounded-md shadow-sm w-full h-64 p-3']) !!}
             id="{{ $editorId }}"
         ></textarea>
     </template>
