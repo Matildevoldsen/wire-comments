@@ -32,6 +32,8 @@ class CommentItem extends Component
 
     public array $emojis;
 
+    public array $markdownOptions = ['b', 'i', 'h1', 'h2', 'ul', 'ol', 'code'];
+
     public function mount(): void
     {
         $this->editForm->body = $this->comment->body;

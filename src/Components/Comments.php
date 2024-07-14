@@ -29,6 +29,8 @@ class Comments extends Component
 
     public int $articlesLimit = 10;
 
+    public array $markdownOptions = ['b', 'i', 'h1', 'h2', 'ul', 'ol', 'code'];
+
     public function mount(): void
     {
         $this->chunks = $this->model->comments()

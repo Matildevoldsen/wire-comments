@@ -7,7 +7,7 @@
 <div x-data="{ preview: false, content: @entangle($attributes->wire('model')) }"
      class="wysiwyg-editor border rounded-lg shadow-sm dark:border-0 p-4 bg-white dark:bg-gray-900"
      id="editor-container-{{ $editorId }}">
-    <div class="toolbar flex space-x-2 mb-4 dark:border-0 border-b pb-2">
+    <div class="toolbar flex space-x-2 mb-4 {{ $options ? 'dark:border-0 border-b' : '' }} pb-2">
         @foreach ($options as $option)
             <button type="button"
                     class="px-2 py-1 hover:bg-gray-200 dark:border-0 dark:hover:bg-gray-800 dark:text-gray-200 text-gray-700 rounded focus:outline-none"

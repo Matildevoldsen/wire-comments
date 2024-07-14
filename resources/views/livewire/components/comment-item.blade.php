@@ -36,7 +36,7 @@
                     <template x-if="editing">
                         <form wire:submit="edit" class="mt-4">
                             <div class="mb-4">
-                                <x-markdown-editor :options="['b', 'i', 'h1', 'h2', 'ul', 'ol']"
+                                <x-markdown-editor :options="$markdownOptions"
                                                    wire:model="editForm.body" placeholder="Post a comment"
                                                    class="w-full bg-gray-800"
                                                    rows="4"/>
@@ -126,7 +126,7 @@
                 <template x-if="replying">
                     <form wire:submit="reply" class="mt-4">
                         <div class="mb-4">
-                            <x-markdown-editor :options="['b', 'i', 'h1', 'h2', 'ul', 'ol']" wire:model="replyForm.body"
+                            <x-markdown-editor :options="$markdownOptions" wire:model="replyForm.body"
                                                placeholder="{{ $this->getReplyToText() }}"
                                                class="w-full"
                                                rows="4"/>

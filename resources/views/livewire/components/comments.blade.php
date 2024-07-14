@@ -3,7 +3,7 @@
         <div class="mt-8 px-6">
             @for($chunk = 0; $chunk < $page; $chunk++)
                 <div class="border-b border-gray-100 dark:border-gray-900 last:border-b-0" wire:key="chunks-{{ $chunk }}">
-                    <livewire:comment-chunk :allowGuests="$allowGuests" :maxDepth="$maxDepth" :emojis="$emojis" :ids="$chunks[$chunk]"
+                    <livewire:comment-chunk :markdownOptions="$markdownOptions" :allowGuests="$allowGuests" :maxDepth="$maxDepth" :emojis="$emojis" :ids="$chunks[$chunk]"
                                                        wire:key="chunk-{{ md5(json_encode($this->chunks[$chunk])) }}"/>
                 </div>
             @endfor
@@ -23,7 +23,7 @@
     @if ($this->allowGuests || auth()->user())
         <form wire:submit="createComment" class="mt-4">
             <div class="mb-3">
-                <x-markdown-editor :options="['b', 'i', 'h1', 'h2', 'ul', 'ol', 'code']" wire:model="form.body" placeholder="Post a comment" class="w-full" rows="4"/>
+                <x-markdown-editor :options="$markdownOptions" wire:model="form.body" placeholder="Post a comment" class="w-full" rows="4"/>
 
                 @error('form.body')
                     <p class="text-red-500 dark:text-red-400 mt-1 mb-1">{{ $message }}</p>

@@ -15,6 +15,8 @@ class CommentChunk extends Component
 
     public array $emojis;
 
+    public array $markdownOptions = ['b', 'i', 'h1', 'h2', 'ul', 'ol', 'code'];
+
     public function render(): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
     {
         $orderClause = 'CASE ';
