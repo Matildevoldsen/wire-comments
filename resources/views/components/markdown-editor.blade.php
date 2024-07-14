@@ -27,6 +27,8 @@
                     <span>&bull;</span>
                 @elseif($option === 'ol')
                     <span>1.</span>
+                @elseif($option === 'code')
+                    <span>< /></span>
                 @else
                     {{ strtoupper($option) }}
                 @endif
@@ -103,6 +105,11 @@
                     markdownText = isActive ? selectedText.replace(/^\d+\.\s/, '') : `1. ${selectedText}`;
                     cursorPosition = isActive ? start : start + 3;
                     break;
+                case 'code':
+                    isActive = selectedText.startsWith('```') && selectedText.endsWith('```');
+                    markdownText = isActive ? selectedText.slice(3, -3) : `\`\`\`\n${selectedText}\n\`\`\``;
+                    cursorPosition = isActive ? start : start + 4;
+                    break;
                 default:
                     markdownText = selectedText;
             }
@@ -126,9 +133,8 @@
             const afterCursor = text.substring(end);
             const currentLine = beforeCursor.split('\n').pop() + afterCursor.split('\n')[0];
 
-            const checkActive = (syntax) => {
-                const tokens = md.parseInline(currentLine, {});
-                return tokens.some(token => token.markup === syntax && token.nesting === 1);
+            const isBetween = (start, end) => {
+                return textarea.selectionStart > start && textarea.selectionEnd < end;
             };
 
             const toggleHighlight = (condition, buttonId) => {
@@ -142,17 +148,19 @@
                 }
             };
 
-            const isBold = currentLine.includes('**') && currentLine.split('**').length > 2;
-            const isItalic = currentLine.includes('*') && currentLine.split('*').length > 2 && !isBold;
-            const isStrikethrough = currentLine.includes('~~') && currentLine.split('~~').length > 2;
+            const isBold = currentLine.includes('**') && isBetween(currentLine.indexOf('**'), currentLine.lastIndexOf('**') + 2);
+            const isItalic = currentLine.includes('*') && !isBold && isBetween(currentLine.indexOf('*'), currentLine.lastIndexOf('*') + 1);
+            const isStrikethrough = currentLine.includes('~~') && isBetween(currentLine.indexOf('~~'), currentLine.lastIndexOf('~~') + 2);
+            const isCode = text.includes('```') && isBetween(text.indexOf('```'), text.lastIndexOf('```') + 3);
 
             toggleHighlight(isBold, `btn-b-${editorId}`);
-            toggleHighlight(isItalic, `btn-i-${editorId}`);  // Ensure italic is not part of bold
+            toggleHighlight(isItalic, `btn-i-${editorId}`);
             toggleHighlight(isStrikethrough, `btn-s-${editorId}`);
             toggleHighlight(currentLine.startsWith('# '), `btn-h1-${editorId}`);
             toggleHighlight(currentLine.startsWith('## '), `btn-h2-${editorId}`);
             toggleHighlight(currentLine.startsWith('- '), `btn-ul-${editorId}`);
             toggleHighlight(currentLine.match(/^\d+\.\s/), `btn-ol-${editorId}`);
+            toggleHighlight(isCode, `btn-code-${editorId}`);
         };
 
         document.querySelectorAll('.wysiwyg-editor').forEach(editor => {

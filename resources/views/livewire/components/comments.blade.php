@@ -23,7 +23,7 @@
     @if ($this->allowGuests || auth()->user())
         <form wire:submit="createComment" class="mt-4">
             <div class="mb-3">
-                <x-markdown-editor :options="['b', 'i', 'h1', 'h2', 'ul', 'ol']" wire:model="form.body" placeholder="Post a comment" class="w-full" rows="4"/>
+                <x-markdown-editor :options="['b', 'i', 'h1', 'h2', 'ul', 'ol', 'code']" wire:model="form.body" placeholder="Post a comment" class="w-full" rows="4"/>
 
                 @error('form.body')
                     <p class="text-red-500 dark:text-red-400 mt-1 mb-1">{{ $message }}</p>
