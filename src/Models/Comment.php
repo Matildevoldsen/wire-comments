@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\LaravelMarkdown\MarkdownRenderer;
+use Stevebauman\Purify\Facades\Purify;
 
 /**
  * Class Comment
@@ -32,6 +34,14 @@ class Comment extends Model
     {
         return $this->belongsTo(config('auth.providers.users.model'));
     }
+
+    public function getComment(): string
+    {
+        $body = Purify::clean($this->body);
+        return app(MarkdownRenderer::class)
+            ->toHtml($this->body);
+    }
+
 
     public function children(): HasMany
     {

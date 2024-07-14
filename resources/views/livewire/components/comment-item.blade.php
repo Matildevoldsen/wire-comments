@@ -38,7 +38,7 @@
                             <div class="mb-4">
                                 <x-markdown-editor :options="['b', 'i', 'h1', 'h2', 'ul', 'ol']"
                                                    wire:model="editForm.body" placeholder="Post a comment"
-                                                   class="w-full bg-gray-800 text-white"
+                                                   class="w-full bg-gray-800"
                                                    rows="4"/>
 
                                 @error('editForm.body')
@@ -54,7 +54,7 @@
                     </template>
                 @endif
                 <div x-show="!editing" class="mt-4 dark:text-white">
-                    @markdown{!! $comment->body !!}@endmarkdown
+                    {!! $comment->getComment() !!}
                     @if ($emojis)
                         <div class="mt-2">
                             <livewire:comment-reactions :allowGuests="$allowGuests" :presetEmojis="$emojis"
