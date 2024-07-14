@@ -38,10 +38,10 @@ class Comment extends Model
     public function getComment(): string
     {
         $body = Purify::clean($this->body);
+
         return app(MarkdownRenderer::class)
             ->toHtml($this->body);
     }
-
 
     public function children(): HasMany
     {
