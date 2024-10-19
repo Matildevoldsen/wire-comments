@@ -7,6 +7,6 @@ use Livewire\Form;
 
 class CreateComment extends Form
 {
-    #[Validate('required')]
+    #[Validate('required|string')]
     public string $body = '';
 }
