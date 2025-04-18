@@ -19,7 +19,7 @@
     ],
     "require": {
         "php": "^8.2",
-        "illuminate/contracts": "^10.0||^11.0|^v12.9.2",
+        "illuminate/contracts": "^10.0|^11.0|^v12.9.2",
         "livewire/livewire": "^3.1",
         "spatie/commonmark-shiki-highlighter": "^2.0.0",
         "spatie/laravel-markdown": "^2.0.0",
