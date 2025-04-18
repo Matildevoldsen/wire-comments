@@ -8,7 +8,7 @@
     ],
     "version": "0.5.1",
     "type": "library",
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/Matildevoldsen/wire-comments",
     "license": "MIT",
     "authors": [
         {
@@ -19,22 +19,22 @@
     ],
     "require": {
         "php": "^8.2",
-        "illuminate/contracts": "^10.0||^11.0",
+        "illuminate/contracts": "^10.0||^11.0|^v12.9.2",
         "livewire/livewire": "^3.1",
         "spatie/commonmark-shiki-highlighter": "^2.0.0",
         "spatie/laravel-markdown": "^2.0.0",
         "spatie/laravel-package-tools": "^1.16",
         "spatie/shiki-php": "^1.3.0 || ^2.0.0",
-        "stevebauman/purify": "^6.2"
+        "stevebauman/purify": "^v6.3.0"
     },
     "require-dev": {
-        "laravel/pint": "^1.14",
+        "laravel/pint": "^v1.22.0",
         "nunomaduro/collision": "^8.1.1||^7.10.0",
         "larastan/larastan": "^2.9",
         "orchestra/testbench": "^9.0.0||^8.22.0",
-        "pestphp/pest": "^2.34",
-        "pestphp/pest-plugin-arch": "^2.7",
-        "pestphp/pest-plugin-laravel": "^2.3",
+        "pestphp/pest": "^2.34|^v3.8.2",
+        "pestphp/pest-plugin-arch": "^2.7|^v3.1.1",
+        "pestphp/pest-plugin-laravel": "^2.3|^v3.1.0",
         "phpstan/extension-installer": "^1.3",
         "phpstan/phpstan-deprecation-rules": "^1.1",
         "phpstan/phpstan-phpunit": "^1.3",
