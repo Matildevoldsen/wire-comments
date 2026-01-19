@@ -8,7 +8,7 @@
     "require": {
         "php": "^8.2",
         "illuminate/contracts": "^10.0 || ^11.0 || ^12.0",
-        "livewire/livewire": "^3.1",
+        "livewire/livewire": "^3.1 || ^4.0",
         "spatie/commonmark-shiki-highlighter": "^2.5",
         "spatie/laravel-markdown": "^2.7.1 || 2.x-dev",
         "spatie/laravel-package-tools": "^1.16",
